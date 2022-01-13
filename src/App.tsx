@@ -7,7 +7,7 @@ import { Todo } from "./shared/interfaces";
 const initialTodos: Todos = [
   { id: "123", title: "Learn JS", completed: false },
   { id: "345", title: "Learn React", completed: false },
-  { id: "567", title: "Learn TypeScript", completed: false },
+  { id: "567", title: "Learn TypeScript", completed: false, status: "started" },
 ];
 
 function App() {
