@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import TodoList from "./components/TodoList";
 import { Todos } from "./shared/types";
+import { Todo } from "./shared/interfaces";
 
 const initialTodos: Todos = [
-  { id: "123", title: "Learn JS", completed: true },
-  { id: "345", title: "Learn React", completed: true },
+  { id: "123", title: "Learn JS", completed: false },
+  { id: "345", title: "Learn React", completed: false },
   { id: "567", title: "Learn TypeScript", completed: false },
 ];
 
@@ -19,10 +20,17 @@ function App() {
 
   const [todos, setTodos] = useState(initialTodos);
 
+  const onToggleTodo =(todo: Todo):void => {
+  todo.completed = !todo.completed
+  setTodos([...todos]) 
+  }
+
   return (
     <Container id="App" className="my-3">
       <h1>Todos</h1>
-      <TodoList todos={todos}>Some content</TodoList>
+      <TodoList todos={todos} onToggleTodo={onToggleTodo}>
+        Some children content
+      </TodoList>
     </Container>
   );
 }
