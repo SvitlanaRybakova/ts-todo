@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import TodoList from "./components/TodoList";
 import { Todos } from "./shared/types";
 import { Todo } from "./shared/interfaces";
+import AddTodoForm from "./components/AddTodoForm";
 
 const initialTodos: Todos = [
   { id: "123", title: "Learn JS", completed: false },
@@ -20,6 +21,10 @@ function App() {
 
   const [todos, setTodos] = useState(initialTodos);
 
+  const onNewTodo=(todo: Todo)=> {
+    setTodos([...todos, todo])
+  }
+
   const onToggleTodo =(todo: Todo):void => {
   todo.completed = !todo.completed
   setTodos([...todos]) 
@@ -28,6 +33,7 @@ function App() {
   return (
     <Container id="App" className="my-3">
       <h1>Todos</h1>
+      <AddTodoForm onNewTodo={onNewTodo} />
       <TodoList todos={todos} onToggleTodo={onToggleTodo}>
         Some children content
       </TodoList>

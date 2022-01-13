@@ -6,9 +6,16 @@ import { Todo } from "../shared/interfaces";
 interface Props {
   todos: Todos;
   onToggleTodo: (todo: Todo) => void;
+  defautlValue?:boolean;
 }
 
-const TodoList: React.FC<Props> = ({ todos, onToggleTodo, children }) => {
+const TodoList: React.FC<Props> = ({
+  todos,
+  onToggleTodo,
+  children,
+  defautlValue = false,
+}) => {
+
   return (
     <>
       {children}
